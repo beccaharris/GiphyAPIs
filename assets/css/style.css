@@ -1,3 +1,9 @@
+body, html {
+  background-color: #73a8a8;
+}
 .hold-my-gif {
   float: left;
+}
+.animal-button {
+  border: 1px solid white
 }
