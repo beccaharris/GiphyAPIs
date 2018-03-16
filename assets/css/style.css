@@ -1,9 +1,30 @@
 body, html {
-  background-color: #73a8a8;
+  background-image: url(../images/background.png)
 }
 .hold-my-gif {
   float: left;
+  padding-top: 50px;
 }
-.animal-button {
-  border: 1px solid white
+.card {
+  opacity: .7
+}
+.gifs {
+  background: rgba(255, 255, 255, 0.7)
+}
+input::placeholder {
+  color: #7a7c7c
+}
+.chip {
+  cursor: pointer;
+  background-color: #26a69a;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  opacity: .9;
+}
+.page-title {
+  text-align: center;
+}
+img {
+  opacity: 1;
 }

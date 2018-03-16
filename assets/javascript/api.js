@@ -1,9 +1,8 @@
 $(document).ready(function() {
-
-  var animals = ["Cat","Dog","Gorilla","Pangolin","Penguin"]
+  var animals = ["orangutan", "panda", "pangolin","dog","alligator", "bear", "mouse", "gorilla","penguin", "cat"]
   generateButtons();
   displayButtons();
-  $(document).on("click", ".animal-button", displayAnimalGifs);
+  $(document).on("click", ".animal-chip", displayAnimalGifs);
   // Get GIFs to pause/animate on click //
   // ================================== //
   $(document).on("click", ".actual-gif", function() {
@@ -22,23 +21,25 @@ $(document).ready(function() {
     $('#submit-button').on('click', function(event) {
       event.preventDefault();
       var userSearch = $('#search-input').val().trim();
+      var lowerUserSearch = userSearch.toLowerCase()
       // So user cannot add a blank button // 
-      if (userSearch == "") {
+      if (lowerUserSearch == "") {
         return false;
       }
-      animals.push(userSearch);
+      animals.push(lowerUserSearch);
+      $('#search-input').val("");
       generateButtons();
     })
   }
   // Function to generate new buttons from animals array //
   // =================================================== //
   function generateButtons() {
-    $('#button-div').empty();
+    $('#chips-div').empty();
     for (var i = 0; i < animals.length; i++) {
-      var newButton = $('<button class="btn btn-dark animal-button">');
-      newButton.attr('data-name', animals[i]);
-      newButton.text(animals[i]);
-      $('#button-div').append(newButton)
+      var chips = $('<div class="chip animal-chip">')
+      chips.attr('data-name', animals[i]);
+      chips.text(animals[i]);
+      $('#chips-div').append(chips)
     }
   }
   // ajax call to GIPHY API to get the actual gifs & ratings //
