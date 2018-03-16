@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var animals = ["orangutan", "panda", "pangolin","dog","alligator", "bear", "mouse", "gorilla","penguin", "cat"]
+  var animals = ["orangutan", "panda", "pangolin", "dog", "alligator", "bear", "mouse", "gorilla", "penguin", "cat", "dinosaur", "rabbit", "shark"]
   generateButtons();
   displayButtons();
   $(document).on("click", ".animal-chip", displayAnimalGifs);
@@ -47,7 +47,10 @@ $(document).ready(function() {
   // ===================================================================== //
   function displayAnimalGifs() {
     $('#gifs-div').empty();
+    $('#pre-gif-div').remove();
     var animal = $(this).attr('data-name');
+    $(this).css('size', '200%')
+    $('#gifs-div').prepend('<h2 class="type-of-gif">' + animal + ' GIFs')
     var giphyURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&limit=10&rating=pg&api_key=1Pcm3RD1MLLpLwru1GsRqd34UJh96MMs"
 
     $.ajax({
@@ -55,13 +58,14 @@ $(document).ready(function() {
       method: "GET"
     }).done(function(response) {
       var resultingGifs = response.data;
+      console.log(response.data)
       for (var i = 0; i < resultingGifs.length; i++) {
         var animalDiv = $('<div class="hold-my-gif">');
         // Display rating // 
-        var gifRating = $('<p>').text('Rating: ' + resultingGifs[i].rating)
+        var gifRating = $('<p class="rating">').text('Rating: ' + resultingGifs[i].rating)
         animalDiv.prepend(gifRating)
         // Display GIFs // 
-        var showGif = $('<img class="actual-gif">');
+        var showGif = $('<img class="actual-gif responsive-img">');
         var animalGifStill = resultingGifs[i].images.fixed_height_small_still.url;
         var animalGifAnimate = resultingGifs[i].images.fixed_height_small.url;
         showGif.attr('src', animalGifStill);
@@ -69,7 +73,7 @@ $(document).ready(function() {
         showGif.attr('data-animate', animalGifAnimate);
         showGif.attr('data-state', 'still');
         animalDiv.prepend(showGif);
-        $('#gifs-div').prepend(animalDiv)
+        $('#gifs-div').append(animalDiv)
       }
     })
   }
