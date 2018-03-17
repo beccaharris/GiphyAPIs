@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var animals = ["orangutan", "panda", "pangolin", "dog", "alligator", "bear", "mouse", "gorilla", "penguin", "cat", "dinosaur", "rabbit", "shark"]
+  var animals = ["orangutan", "panda", "pangolin", "dog", "alligator", "bear", "mouse", "gorilla", "penguin", "cat", "dinosaur", "rabbit"]
   generateButtons();
   displayButtons();
   $(document).on("click", ".animal-chip", displayAnimalGifs);
