@@ -23,11 +23,12 @@ $(document).ready(function() {
       var userSearch = $('#search-input').val().trim();
       var lowerUserSearch = userSearch.toLowerCase()
       // So user cannot add a blank button // 
-      if (lowerUserSearch == "") {
+      if (lowerUserSearch.length < 3) {
         return false;
       }
       animals.push(lowerUserSearch);
       $('#search-input').val("");
+      Materialize.updateTextFields()
       generateButtons();
     })
   }
@@ -66,8 +67,8 @@ $(document).ready(function() {
         animalDiv.prepend(gifRating)
         // Display GIFs // 
         var showGif = $('<img class="actual-gif responsive-img">');
-        var animalGifStill = resultingGifs[i].images.fixed_height_small_still.url;
-        var animalGifAnimate = resultingGifs[i].images.fixed_height_small.url;
+        var animalGifStill = resultingGifs[i].images.fixed_height_still.url;
+        var animalGifAnimate = resultingGifs[i].images.fixed_height.url;
         showGif.attr('src', animalGifStill);
         showGif.attr('data-still', animalGifStill);
         showGif.attr('data-animate', animalGifAnimate);

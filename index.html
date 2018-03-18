@@ -25,7 +25,10 @@
             <p class='flow-text'>Type the name of an animal on the line below, then click the "Add my animal" button. You will see the name of the animal added on to the already-existing list of names.<br> Click on the animal name to populate GIFs, and then click on each individual GIF to make it animate/pause!</p>
           </div>
           <div class="card-action">
-            <input type="text"id="search-input" placeholder="Type an animal name here">
+            <div class="input-field">
+              <input id="search-input" type="text" class="validate" required minlength="3">
+              <label for="search-input" class="label" data-error="your animal must be at least 3 characters long!">Type an animal name here</label>
+            </div>
             <button class="btn-large waves-effect" type="button" id="submit-button"><i class="material-icons left">pets</i>Add my animal</button>
           </div>
         </div>

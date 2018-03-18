@@ -22,9 +22,9 @@ body {
 .page-title {
   text-align: center;
 }
-input::placeholder {
+.label {
   color: #7a7c7c;
-  font-size: 20px;
+  font-size: 20px !important;
 }
 .chip {
   cursor: pointer;
@@ -52,8 +52,10 @@ h3 {
   align-content: center;
   border-radius: 4px;
 }
-.rating, .title {
-  margin-top: 0
+.rating {
+  margin-top: 0;
+  font-size: 18px;
+  font-weight: bold;
 }
 .page-footer {
   margin-top: 20px;
@@ -65,4 +67,8 @@ h3 {
   padding-bottom: 20px;
   text-align: center;
 }
+#submit-button {
+  margin-top: 10px;
+}
+
 
