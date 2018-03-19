@@ -2,18 +2,19 @@ $(document).ready(function() {
   var animals = ["orangutan", "panda", "pangolin", "dog", "alligator", "bear", "mouse", "gorilla", "penguin", "cat", "dinosaur", "rabbit"]
   generateButtons();
   displayButtons();
+  removeLastChip();
   $(document).on("click", ".animal-chip", displayAnimalGifs);
   // Get GIFs to pause/animate on click //
   // ================================== //
-  $(document).on("click", ".actual-gif", function() {
+  $(document).on("mouseover", ".actual-gif", function() {
     var state = $(this).attr('data-state');
-    if (state === 'still') {
       $(this).attr('src', $(this).attr('data-animate'));
       $(this).attr('data-state', 'animate')
-    } else {
-      $(this).attr('src', $(this).attr('data-still'));
-      $(this).attr('data-state', 'still');
-    }
+  });
+  $(document).on("mouseout", ".actual-gif", function() {
+    var state = $(this).attr('data-state');
+    $(this).attr('src', $(this).attr('data-still'));
+    $(this).attr('data-state', 'still');
   });
   // Function to push new buttons to array on click of submit //
   // ======================================================== //
@@ -42,6 +43,15 @@ $(document).ready(function() {
       chips.text(animals[i]);
       $('#chips-div').append(chips)
     }
+  }
+
+  function removeLastChip() {
+    $('#delete-button').on('click', function() {
+      animals.pop();
+      generateButtons();
+      displayButtons();
+      return false;
+    })
   }
   // ajax call to GIPHY API to get the actual gifs & ratings //
   // defines still and animated urls from response - sets default to still // 

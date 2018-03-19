@@ -52,6 +52,9 @@ h3 {
   align-content: center;
   border-radius: 4px;
 }
+.actual-gif:hover {
+  cursor: url(../images/ic_gif_black_24dp_2x.png), auto
+}
 .rating {
   margin-top: 0;
   font-size: 18px;
@@ -69,6 +72,12 @@ h3 {
 }
 #submit-button {
   margin-top: 10px;
+}
+#delete-button {
+  float: right;
+  margin-top: 10px;
+  background-color: #2e0707;
+  color: white;
 }
 
 
